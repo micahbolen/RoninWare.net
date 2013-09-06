@@ -9,11 +9,14 @@
     <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
     <script type="text/javascript"  src="scripts/jquery.fittext.js"></script>
     <script type="text/javascript"  src="scripts/verge.min.js"></script>
-    <!--  <script type="text/javascript"  src="scripts/jquery.backstretch.min.js"></script>-->
+
 
     <style>
       html, body {
+
         margin:0;
+
+
         padding: 0;
         overflow-x: hidden;
         position: relative;
@@ -400,7 +403,7 @@
         $("body").prepend('<div style="'+bgStyle+'"><img src="'+bg+'" style="width:'+bgW+'px;height:'+bgH+'px" /></div>');
 
         var companyHeight = ($.viewportH() / 2) - 175;
-        $("#company").height(companyHeight).fitText(.85);
+        $("#company").height(companyHeight > 100 ? companyHeight : 100).fitText(.85, { minFontSize: '46px' });
 
 
 
