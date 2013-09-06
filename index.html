@@ -122,7 +122,7 @@
 
       #who p {
         text-shadow:none;
-
+        font-size: 18px;
         text-align: justify;
       }
 
@@ -162,6 +162,8 @@
       }
 
       #books {
+
+        padding: 10px 0;
         font-family: 'Nova Square', cursive;
 
         /* Fallback for web browsers that don't support RGBa */
@@ -402,9 +404,15 @@
         var companyHeight = ($.viewportH() / 2) - 175;
         $("#company").height(companyHeight > 100 ? companyHeight : 100).fitText(.85, { minFontSize: '46px' });
 
-
         var colHeight = $.viewportH() / 2;
-        $("#what, #who, #books").height(colHeight > 353 ? colHeight : 353);
+        if ($.viewportW() >= 992) {
+          $("#what, #who, #books").height(colHeight > 500 ? colHeight : 500);
+        } else if ($.viewportW() >= 768) {
+           $("#what, #who, #books").height(colHeight);
+        } else {
+          $("#what, #who, #books").height(colHeight > 400 ? colHeight : 400);
+        }
+
 
         var flippedTop = $.viewportH() - 136;
         $("#checkerboard-flipped").css({"margin-top":flippedTop +"px"});
@@ -454,7 +462,7 @@
 
 
       <div id="who" class="col-md-4">
-        <h3>WHO WE ARE</h3>
+        <h3>WHO WE ARE</h3><br/>
       <a style="text-decoration:none!important;display:block;" href="http://stackoverflow.com/users/54055/tj-kellie">
           <img style="box-shadow:0 0 15px #CCC;" src="http://stackoverflow.com/users/flair/54055.png" width="208" height="58" alt="profile for Tj Kellie at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Tj Kellie at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
         </a><br/>
@@ -475,7 +483,7 @@
       </div>
 
       <div id="books" class="col-md-4">
-                <h3>MUST-READS</h3>
+        <h3>MUST-READS</h3><br/><br/>
         <div class="book-info">
 
           <section class="book-container">
