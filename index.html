@@ -389,18 +389,14 @@
     <script type='text/javascript'>
       //<![CDATA[
 
-      var items = Array('bg_akira1.jpg', 'bg_akira3', 'bg_dune3.jpg','Shadowrun.jpg', 'bg_neuromancer.jpg', 'bg_dune2.jpg', 'bg_snowcrash2.png', 'bg_neuromancer1.jpg');
-        //var items = Array('bg_dune3.jpg');
-        var pagestate = items[Math.floor(Math.random() * items.length)];
-        var bg = 'img/backgrounds/' + pagestate;
+
 
       function init() {
 
-
         var bgW = $.viewportW();
         var bgH = $.viewportH();
-        var bgStyle = 'position:fixed;width:'+bgW+'px;height:'+bgH+'px;z-index:-2;display:block;';
-        $("body").prepend('<div style="'+bgStyle+'"><img src="'+bg+'" style="width:'+bgW+'px;height:'+bgH+'px" /></div>');
+        $("#bg, #bg-img").css({'width':bgW+'px','height':bgH+'px'});
+
 
         var companyHeight = ($.viewportH() / 2) - 175;
         $("#company").height(companyHeight > 100 ? companyHeight : 100).fitText(.85, { minFontSize: '46px' });
@@ -417,6 +413,14 @@
 
       $(function () {
         $.extend(verge);
+        var items = Array('bg_akira1.jpg', 'bg_akira3', 'bg_dune3.jpg','Shadowrun.jpg', 'bg_neuromancer.jpg', 'bg_dune2.jpg', 'bg_snowcrash2.png', 'bg_neuromancer1.jpg');
+        //var items = Array('bg_dune3.jpg');
+        var pagestate = items[Math.floor(Math.random() * items.length)];
+        var bg = 'img/backgrounds/' + pagestate;
+        var bgW = $.viewportW();
+        var bgH = $.viewportH();
+        var bgStyle = 'position:fixed;width:'+bgW+'px;height:'+bgH+'px;z-index:-2;display:block;';
+        $("body").prepend('<div id="bg" style="'+bgStyle+'"><img id="bg-img" src="'+bg+'" style="width:'+bgW+'px;height:'+bgH+'px" /></div>');
         init();
 
       });
