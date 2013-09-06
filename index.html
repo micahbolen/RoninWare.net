@@ -401,19 +401,23 @@
         $("#bg, #bg-img").css({'width':bgW+'px','height':bgH+'px'});
 
 
-        var companyHeight = ($.viewportH() / 2) - 175;
-        $("#company").height(companyHeight > 100 ? companyHeight : 100).fitText(.85, { minFontSize: '46px' });
-
         /**
         * In addition to font size, these values will need to be adjusted
         * depending on the number of lines of text you end up with when
         * you replace the current dummy text.
         */
         var colHeight = $.viewportH() / 2;
+        var companyHeight = ($.viewportH() / 2) - 200;
+
         if ($.viewportW() >= 992) {
           $("#what, #who, #books").height(colHeight > 500 ? colHeight : 500);
+          $("#company").height(companyHeight > 100 ? companyHeight : 100).fitText(.85, { minFontSize: '46px' });
+        } else if ($.viewportW() >= 768) {
+          $("#what, #who, #books").height(colHeight - 150 > 350 ? colHeight - 150 : 350);
+          $("#company").height(companyHeight - 150 > 100 ? companyHeight - 150 : 100).fitText(.85, { minFontSize: '46px' });
         } else {
-          $("#what, #who, #books").height(colHeight > 400 ? colHeight : 400);
+          $("#what, #who, #books").height(colHeight > 480 ? colHeight : 480);
+          $("#company").height(companyHeight - 150 > 100 ? companyHeight - 150 : 100).fitText(.85, { minFontSize: '46px' });
         }
 
 
