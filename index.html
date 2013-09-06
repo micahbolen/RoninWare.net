@@ -407,8 +407,6 @@
         var colHeight = $.viewportH() / 2;
         if ($.viewportW() >= 992) {
           $("#what, #who, #books").height(colHeight > 500 ? colHeight : 500);
-        } else if ($.viewportW() >= 768) {
-           $("#what, #who, #books").height(colHeight);
         } else {
           $("#what, #who, #books").height(colHeight > 400 ? colHeight : 400);
         }
