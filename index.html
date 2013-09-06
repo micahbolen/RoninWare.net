@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>RoninWare.net</title>
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+    <link href='css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Nova+Square' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript"  src="scripts/jquery.fittext.js"></script>
+    <script type="text/javascript"  src="scripts/verge.min.js"></script>
+    <!--  <script type="text/javascript"  src="scripts/jquery.backstretch.min.js"></script>-->
+
+    <style>
+      html, body {
+        margin:0;
+        padding: 0;
+        overflow-x: hidden;
+        position: relative;
+        font-family: 'Nova Square', cursive;
+      }
+
+      a {
+        color: white;
+        text-decoration: underline;
+      }
+
+      a:hover {
+        color: white;
+        text-shadow:none;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+
+      font-family: 'Nova Square', cursive;
+      }
+
+      footer {
+
+
+      }
+
+      .col-md-4 {
+      font-family: 'Nova Square', cursive;
+        padding: 40px 0;
+
+      }
+
+      .avatar {
+        text-shadow:none;
+        width:64px;
+        height:64px;
+        background-color:#000;
+        border: 5px white;
+        font-size:10px;
+
+      }
+
+      .name {
+
+      }
+
+      .name, .title {
+        width:100%;
+      }
+
+      .title {
+        text-shadow:none;
+        font-size: .75em;
+        letter-spacing: 0.3em;
+
+      }
+
+
+      #checkerboard {
+        background: url('img/checkerboard.png') repeat-x;
+        z-index: -1;
+        position: fixed;
+        width:100%;
+        height:800px;
+
+      }
+
+      #checkerboard-flipped {
+        background: url('img/checkerboard-flipped.png') repeat-x;
+        z-index: -1;
+        position: fixed;
+        width:100%;
+
+        height:800px;
+      }
+
+      #who, #books {
+        text-align:center;
+        color:white;
+        font-family: 'Nova Square', cursive;
+        font-size:18px;
+        text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+
+        /* Fallback for web browsers that don't support RGBa */
+        background-color: rgb(0, 0, 0);
+        /* RGBa with 0.6 opacity */
+        background-color: rgba(0, 0, 0, 0.85);
+        /* For IE 5.5 - 7*/
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+        /* For IE 8*/
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+      }
+
+
+
+      .book-info {
+        text-shadow:none;
+        text-align:center;
+
+      }
+
+      #who p {
+        text-shadow:none;
+
+        text-align: justify;
+      }
+
+      #who {
+
+        font-family: 'Nova Square', cursive;
+
+
+      }
+
+      #what {
+        font-family: 'Nova Square', cursive;
+        text-align:center;
+
+        /* Fallback for web browsers that don't support RGBa */
+        background-color: rgb(0, 0, 0);
+        /* RGBa with 0.6 opacity */
+        background-color: rgba(0, 0, 0, 0.6);
+        /* For IE 5.5 - 7*/
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+        /* For IE 8*/
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+
+
+        color:white;
+
+
+        text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+      }
+
+      #what p {
+        font-size:24px;
+        text-shadow: none;
+        text-align:justify;
+        padding:0 40px;
+
+      }
+
+      #books {
+        font-family: 'Nova Square', cursive;
+
+           /* Fallback for web browsers that don't support RGBa */
+        background-color: rgb(0, 0, 0);
+        /* RGBa with 0.6 opacity */
+        background-color: rgba(0, 0, 0, 0.95);
+        /* For IE 5.5 - 7*/
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+        /* For IE 8*/
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+
+      }
+
+      .ronin {
+        color:black;
+        text-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em white;
+      }
+
+      #company {
+
+        margin: 0;
+
+
+        text-align: center;
+
+        width:100%;
+        display:block;
+        color:white;
+        font-family: 'Nova Square', cursive;
+
+        text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+      }
+
+      #contact {
+        font-size:24px;
+        width:200px;
+        height: 50px;
+        color:white;
+        font-family: 'Nova Square', cursive;
+
+        text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+        box-shadow: 0px 1px 2px white, 0px 5px 15px blue;
+        border: none;
+        border-radius: 40px 0px;
+        background-color: rgb(0, 0, 0);
+
+      }
+
+      #contact:hover {
+        text-shadow:none;
+        box-shadow:none;
+        cursor:pointer;
+        border: 1px solid white;
+      }
+
+
+      .book-container {
+        width: 100px;
+        height: 160px;
+        position: relative;
+        margin: 0 auto;
+
+        -webkit-perspective: 1200px;
+        -moz-perspective: 1200px;
+        -o-perspective: 1200px;
+        perspective: 1200px;
+      }
+
+      #box, #box2 {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -o-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-transition: -webkit-transform 1s;
+        -moz-transition: -moz-transform 1s;
+        -o-transition: -o-transform 1s;
+        transition: transform 1s;
+      }
+
+      #box figure, #box2 figure {
+        display: block;
+        position: absolute;
+        border: 2px solid black;
+
+        text-align: center;
+        font-weight: bold;
+        color: white;
+      }
+
+      #box.panels-backface-invisible figure, #box2.panels-backface-invisible figure {
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -o-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+
+      #box .front,
+      #box .back,
+      #box2 .front,
+      #box2 .back
+      {
+        width: 100px;
+        height: 160px;
+      }
+
+      #box .right,
+      #box .left,
+      #box2 .right,
+      #box2 .left
+      {
+        width: 25px;
+        height: 155px;
+        left: 0px;
+
+      }
+
+      #box .top,
+      #box .bottom,
+      #box2 .top,
+      #box2 .bottom
+      {
+        width: 100px;
+        height: 25px;
+        top: 46px;
+
+      }
+
+
+
+
+      #box .front, #box2 .front  { border:5px black; background-color:black; }
+      #box .back, #box2 .back   { background-color:black;border:15px black; top:2px}
+      #box .right, #box2 .right  { background-color:#CCC;border:1px black; top:4px;}
+      #box .left, #box2 .left   { background-color:black;border:15px black; top: 7px;}
+      #box .top, #box2 .top    { border:5px black; }
+      #box .bottom, #box2 .bottom { background-color:#CCC; border:5px black;  }
+
+      #box .front, #box2 .front  {
+        -webkit-transform: translateZ( 10px );
+        -moz-transform: translateZ( 10px );
+        -o-transform: translateZ( 10px );
+        transform: translateZ( 10px );
+      }
+      #box .back, #box2 .back   {
+        -webkit-transform: rotateX( -180deg ) translateZ(  10px );
+        -moz-transform: rotateX( -180deg ) translateZ(  10px );
+        -o-transform: rotateX( -180deg ) translateZ(  10px );
+        transform: rotateX( -180deg ) translateZ(  10px );
+      }
+      #box .right, #box2 .right {
+        -webkit-transform: rotateY(   90deg ) translateZ( 90px );
+        -moz-transform: rotateY(   90deg ) translateZ( 90px );
+        -o-transform: rotateY(   90deg ) translateZ( 90px );
+        transform: rotateY(   90deg ) translateZ( 90px );
+      }
+      #box .left, #box2 .left {
+        -webkit-transform: rotateY(  -90deg ) translateZ( 10px );
+        -moz-transform: rotateY(  -90deg ) translateZ( 10px );
+        -o-transform: rotateY(  -90deg ) translateZ( 10px );
+        transform: rotateY(  -90deg ) translateZ( 10px );
+      }
+      #box .top, #box2 .top {
+        -webkit-transform: rotateX(   90deg ) translateZ( 60px );
+        -moz-transform: rotateX(   90deg ) translateZ( 60px );
+        -o-transform: rotateX(   90deg ) translateZ( 60px );
+        transform: rotateX(   90deg ) translateZ( 60px );
+      }
+      #box .bottom, #box2 .bottom {
+        -webkit-transform: rotateX(  -90deg ) translateZ( 100px );
+        -moz-transform: rotateX(  -90deg ) translateZ( 100px );
+        -o-transform: rotateX(  -90deg ) translateZ( 100px );
+        transform: rotateX(  -90deg ) translateZ( 100px );
+      }
+
+
+      #box.show-front, #box2.show-front {
+        -webkit-transform: translateZ(  -50px );
+        -moz-transform: translateZ(  -50px );
+        -o-transform: translateZ(  -50px );
+        transform: translateZ(  -50px );
+      }
+      #box.show-back, #box2.show-back {
+        -webkit-transform: translateZ( -50px ) rotateX( -180deg );
+        -moz-transform: translateZ( -50px ) rotateX( -180deg );
+        -o-transform: translateZ( -50px ) rotateX( -180deg );
+        transform: translateZ( -50px ) rotateX( -180deg );
+      }
+      #box.show-right, #box2.show-right {
+        -webkit-transform: translateZ( -150px ) rotateY(  -25deg ) rotateX(25deg);
+        -moz-transform: translateZ( -150px ) rotateY(  -25deg ) rotateX(25deg);
+        -o-transform: translateZ( -150px ) rotateY(  -25deg ) rotateX(25deg);
+        transform: translateZ( -150px ) rotateY(  -25deg ) rotateX(25deg);
+      }
+      #box.show-left, #box2.show-left {
+        -webkit-transform: translateZ( -150px ) rotateY(   90deg );
+        -moz-transform: translateZ( -150px ) rotateY(   90deg );
+        -o-transform: translateZ( -150px ) rotateY(   90deg );
+        transform: translateZ( -150px ) rotateY(   90deg );
+      }
+      #box.show-top, #box2.show-top {
+        -webkit-transform: translateZ( -100px ) rotateX(  -90deg );
+        -moz-transform: translateZ( -100px ) rotateX(  -90deg );
+        -o-transform: translateZ( -100px ) rotateX(  -90deg );
+        transform: translateZ( -100px ) rotateX(  -90deg );
+      }
+      #box.show-bottom, #box2.show-bottom {
+        -webkit-transform: translateZ( -100px ) rotateX(   90deg );
+        -moz-transform: translateZ( -100px ) rotateX(   90deg );
+        -o-transform: translateZ( -100px ) rotateX(   90deg );
+        transform: translateZ( -100px ) rotateX(   90deg );
+      }
+
+      #contact-row {
+        height: 100px;
+        padding: 25px;
+        margin: 0 auto;
+        text-align:center;
+      }
+
+
+    </style>
+
+    <script type='text/javascript'>
+      //<![CDATA[
+
+      var items = Array('bg_akira1.jpg', 'bg_akira3', 'bg_dune3.jpg','Shadowrun.jpg', 'bg_neuromancer.jpg', 'bg_dune2.jpg', 'bg_snowcrash2.png', 'bg_neuromancer1.jpg');
+        //var items = Array('bg_dune3.jpg');
+        var pagestate = items[Math.floor(Math.random() * items.length)];
+        var bg = 'img/backgrounds/' + pagestate;
+
+      function init() {
+
+
+        var bgW = $.viewportW();
+        var bgH = $.viewportH();
+        var bgStyle = 'position:fixed;width:'+bgW+'px;height:'+bgH+'px;z-index:-2;display:block;';
+        $("body").prepend('<div style="'+bgStyle+'"><img src="'+bg+'" style="width:'+bgW+'px;height:'+bgH+'px" /></div>');
+
+        var companyHeight = ($.viewportH() / 2) - 100;
+        $("#company").height(companyHeight).fitText(.85);
+
+
+
+
+
+        var flippedTop = $.viewportH() - 136;
+        $("#checkerboard-flipped").css({"margin-top":flippedTop +"px"});
+
+        $(".fit").fitText();
+      }
+
+      $(function () {
+        $.extend(verge);
+        init();
+
+      });
+
+     $( window ).on( "orientationchange resize", function( event ) {
+        init();
+    });
+      //]]>
+
+    </script>
+
+  </head>
+  <body>
+
+    <div id="checkerboard"></div>
+    <div id="checkerboard-flipped"></div>
+    <header id="company">
+      <div style="height:90px;width:100%;display:block;"></div>
+      <span class="ronin">Ronin</span>Ware.net
+      <br/>
+
+
+    </header>
+    <div id="contact-row" class="row">
+      <button id="contact">CONTACT</button>
+    </div>
+    <div id="what" class="row">
+      <div class="col-md-4"> <h2 class="fit">SOFTWARE DEVELOPMENT TEAM</h2></div>
+
+
+      <div class="col-md-4">
+        <p><span style="background-color:white;color:black;font-weight:bold;">Ronin</span><span style="background-color:black;">Ware.net</span> is a US based full service development &amp; interactive design agency.
+
+          Founded in 2006 we're an established company that's <span style="background-color:white;color:black">extremely passionate</span> about solving problems in the digital space.
+
+
+        </p></div>
+      <div class="col-md-4">
+      <p>
+        Our core services include web development, design, illustration, concept art and photography.<br/><br/>
+
+        Like our work?  Drop us a <span style="background-color:black;">&nbsp;<a href="#">line</a>&nbsp;</span>.
+        </p>
+      </div>
+    </div>
+
+
+
+    <div id="who" class="row">
+      <div class="col-md-4"><h3 class="fit">WHO WE ARE</h3></div>
+      <div class="col-md-4">
+
+
+        <!-- SO flair -->
+        <a style="text-decoration:none!important;display:block;" href="http://stackoverflow.com/users/54055/tj-kellie">
+          <img style="box-shadow:0 0 15px #CCC;" src="http://stackoverflow.com/users/flair/54055.png" width="208" height="58" alt="profile for Tj Kellie at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Tj Kellie at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+        </a><br/>
+        <a style="text-decoration:none!important;" href="#"><span class="name">TJ Kellie <span class="glyphicon glyphicon-envelope"></span></span></a><br/>
+        <span class="title">CEO</span>
+
+        </div>
+      <div class="col-md-4">
+
+        <a style="text-decoration:none !important;display:block;" href="http://stackoverflow.com/users/396070/micah-delane-bolen">
+          <img style="box-shadow:0 0 15px #CCC;" src="http://stackoverflow.com/users/flair/396070.png" width="208" height="58" alt="profile for Micah Delane Bolen at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Micah Delane Bolen at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+        </a><br/>
+        <a style="text-decoration:none!important;" href="#"><span class="name">Some Other Guy <span class="glyphicon glyphicon-envelope"></span></span></a><br/>
+        <span class="title">Intern</span>
+
+      </div>
+
+    </div>
+
+    <div id="books" class="row">
+      <div class="col-md-4"><h3 class="fit">MUST-READS</h3></div>
+      <div class="col-md-4">
+
+        <div class="book-info">
+
+          <section class="book-container">
+            <div id="box" class=" show-right">
+              <figure class="front"><a style="text-decoration:none;" href="http://www.amazon.com/gp/product/B000FBJCJE/ref=as_li_tf_il?ie=UTF8&tag=wwwpowerobjec-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=B000FBJCJE">
+                <img border="0" src="http://ws.assoc-amazon.com/widgets/q?_encoding=UTF8&Format=_SL160_&ASIN=B000FBJCJE&MarketPlace=US&ID=AsinImage&WS=1&tag=wwwpowerobjec-20&ServiceVersion=20070822" >
+                </a><img src="http://www.assoc-amazon.com/e/ir?t=wwwpowerobjec-20&l=as2&o=1&a=B000FBJCJE" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></figure>
+              <figure class="back"></figure>
+              <figure class="right"></figure>
+              <figure class="left"></figure>
+              <figure class="top"></figure>
+              <figure class="bottom"></figure>
+            </div>
+          </section>
+          <br />
+          <a href="#"> Snow Crash</a>
+          <br />
+          by Neal Stephenson
+        </div>
+        </div>
+      <div class="col-md-4"><div class="book-info">
+          <section class="book-container">
+            <div id="box2" class=" show-right">
+              <figure class="front"><a style="text-decoration:none;" href="http://www.amazon.com/gp/product/0441013597/ref=as_li_tf_il?ie=UTF8&tag=wwwpowerobjec-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0441013597"><img border="0" src="http://ws.assoc-amazon.com/widgets/q?_encoding=UTF8&Format=_SL160_&ASIN=0441013597&MarketPlace=US&ID=AsinImage&WS=1&tag=wwwpowerobjec-20&ServiceVersion=20070822" ></a>
+                <img src="http://www.assoc-amazon.com/e/ir?t=wwwpowerobjec-20&l=as2&o=1&a=0441013597" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></figure>
+              <figure class="back"></figure>
+              <figure class="right"></figure>
+              <figure class="left"></figure>
+              <figure class="top"></figure>
+              <figure class="bottom"></figure>
+            </div>
+          </section>
+
+          <br />
+          <a href="#">Dune</a>
+          <br />
+          by Frank Herbert
+        </div></div>
+
+    </div>
+
+  </body>
+</html>
