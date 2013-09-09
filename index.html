@@ -23,6 +23,10 @@
         font-family: 'Nova Square', cursive;
       }
 
+      body {
+
+      }
+
       a {
         color: white;
         text-decoration: underline;
@@ -180,6 +184,10 @@
       .ronin {
         color:black;
         text-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em white;
+      }
+
+      #content {
+        opacity: 0;
       }
 
       #company {
@@ -425,6 +433,8 @@
         $("#checkerboard-flipped").css({"margin-top":flippedTop +"px"});
 
         $(".fit").fitText();
+
+        $("#content").animate({opacity: "1.0"}, 4000);
       }
 
       $(function () {
@@ -453,10 +463,11 @@
 
     <div id="checkerboard"></div>
     <div id="checkerboard-flipped"></div>
+    <div id="content">
     <div style="height:75px;display:block"></div>
     <header id="company">
 
-      <span class="ronin">Ronin</span>Ware.net
+      <span class="ronin"><span id="r">R</span>onin</span>Ware.net
       <br/>
 
 
@@ -530,7 +541,7 @@
         </div>
       </div>
     </div>
-
+    </div>
 
 
   </body>
