@@ -32,7 +32,7 @@
       }
 
       body {
-
+        background-color:black;
       }
 
       a {
@@ -448,6 +448,7 @@
         $(".fit").fitText();
 
         $("#company").animate({opacity: "1.0"}, 6000);
+
       }
 
       $(function () {
@@ -456,6 +457,9 @@
 
         var maskStyle = 'position:absolute;z-index:999;background-color:black;width:'+$.viewportW()+'px;height:'+$.viewportH()+'px;';
         $("body").prepend('<div id="mask" style="'+maskStyle+'"></div>');
+        $("#mask").fadeOut(4000);
+//         var blackStyle = 'position:absolute;z-index:-2;background-color:black;width:'+$.viewportW()+'px;height:'+$.viewportH()+'px;';
+//         $("body").prepend('<div id="black" style="'+blackStyle+'"></div>');
 
         var items = Array('bg_akira1.jpg', 'bg_akira3', 'bg_dune3.jpg','Shadowrun.jpg', 'bg_neuromancer.jpg', 'bg_dune2.jpg', 'bg_snowcrash2.png', 'bg_neuromancer1.jpg');
         //var items = Array('bg_dune3.jpg');
@@ -466,7 +470,7 @@
         var bgH = $.viewportH();
         var bgStyle = 'position:fixed;width:'+bgW+'px;height:'+bgH+'px;z-index:-2;display:block;background-color:black;';
             $("body").prepend('<div id="bg" style="'+bgStyle+'"><img id="bg-img" src="'+bg+'" style="width:'+bgW+'px;height:'+bgH+'px" /></div>');
-        $("#mask").fadeOut(4000);
+
         init();
 
       });
