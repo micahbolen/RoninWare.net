@@ -55,6 +55,23 @@
 
       }
 
+      @-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+#logo
+{
+    -webkit-animation-name:             rotate;
+    -webkit-animation-duration:         5s;
+    -webkit-animation-iteration-count:  infinite;
+    -webkit-animation-timing-function: linear;
+    }
+
       .col-md-4 {
         font-family: 'Nova Square', cursive;
         padding: 40px 0;
@@ -455,8 +472,13 @@
 
         $.extend(verge);
 
-        var maskStyle = 'position:absolute;z-index:999;background-color:black;width:'+$.viewportW()+'px;height:'+$.viewportH()+'px;';
-        $("body").prepend('<div id="mask" style="'+maskStyle+'"></div>');
+        var maskStyle = 'position:absolute;z-index:999;background-color:#AAA;width:'+$.viewportW()+'px;height:'+$.viewportH()+'px;';
+        var logoSize = $.viewportW() > $.viewportH() ? $.viewportH() / 2 : $.viewportW() / 2;
+        var logoTop = Math.abs(($.viewportH() / 2) - (logoSize/2));
+        var logoLeft = Math.abs(($.viewportW() / 2) - (logoSize/2));
+        var logoStyle = 'position:absolute;width:'+logoSize+'px;height:'+logoSize+'px;margin-top:'+logoTop+'px;margin-left:'+logoLeft+'px';
+        $("body").prepend('<div id="mask" style="'+maskStyle+'"><img id="logo" style="'+logoStyle+'" src="img/logo.svg" /></div>');
+
         $("#mask").fadeOut(4000);
 //         var blackStyle = 'position:absolute;z-index:-2;background-color:black;width:'+$.viewportW()+'px;height:'+$.viewportH()+'px;';
 //         $("body").prepend('<div id="black" style="'+blackStyle+'"></div>');
