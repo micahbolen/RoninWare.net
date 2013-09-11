@@ -486,7 +486,27 @@
         var logoStyle = 'position:absolute;width:'+logoSize+'px;height:'+logoSize+'px;margin-top:'+logoTop+'px;margin-left:'+logoLeft+'px';
         $("body").prepend('<div id="mask" style="'+maskStyle+'"><img id="logo" style="'+logoStyle+'" src="img/logo.svg" /></div>');
 
-        $("#mask").fadeOut(4000);
+        var flickerCounter = 0;
+
+        function flickerMask() {
+
+
+          if(flickerCounter %  2 === 0) {
+            $('#mask').fadeOut(Math.random()*100);
+          } else {
+            $('#mask').fadeIn(Math.random()*100);
+          }
+
+          flickerCounter++;
+          if (flickerCounter === 10) {
+            $("#mask").fadeOut(4000);
+           clearInterval(flickerInterval);
+          }
+        }
+        var flickerInterval;
+        flickerInterval = window.setInterval(flickerMask, 100);
+
+
 //         var blackStyle = 'position:absolute;z-index:-2;background-color:black;width:'+$.viewportW()+'px;height:'+$.viewportH()+'px;';
 //         $("body").prepend('<div id="black" style="'+blackStyle+'"></div>');
 
