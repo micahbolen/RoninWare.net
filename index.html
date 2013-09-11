@@ -288,10 +288,7 @@
         display: block;
         position: absolute;
         border: 2px solid black;
-       -webkit-backface-visibility: hidden;
-        -moz-backface-visibility: hidden;
-        -o-backface-visibility: hidden;
-        backface-visibility: hidden;
+
         text-align: center;
         font-weight: bold;
         color: white;
@@ -338,7 +335,14 @@
 
 
 
-      #box .front, #box2 .front  { border:5px black; background-color:black; }
+      #box .front, #box2 .front  {
+        border:5px black; background-color:black;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -o-backface-visibility: hidden;
+        backface-visibility: hidden;
+
+      }
       #box .back, #box2 .back   { background-color:black;border:15px black; top:2px}
       #box .right, #box2 .right  { background-color:#CCC;border:1px black; top:4px;}
       #box .left, #box2 .left   { background-color:black;border:15px black; top: 7px;}
