@@ -74,9 +74,16 @@
 
       .col-md-4 {
         font-family: 'Nova Square', cursive;
-        padding: 40px 0;
+        padding: 40px 10px;
 
       }
+
+      /*Small devices (phones, 768px and below) */
+@media (max-width: 768px) {
+      .col-md-4 p, #books {
+        font-size: 1.5em !important;
+      }
+    }
 
       .avatar {
         text-shadow:none;
@@ -455,13 +462,18 @@
         var companyHeight = ($.viewportH() / 2) - 175;
 
         if ($.viewportW() >= 992) {
-          $("#what, #who, #books").height(colHeight > 500 ? colHeight : 500);
+          $("#what, #who, #books").height(colHeight > 520 ? colHeight : 520);
           $("#company").height(companyHeight > 100 ? companyHeight : 100).fitText(.85, { minFontSize: '46px' });
         } else if ($.viewportW() >= 768) {
-          $("#what, #who, #books").height(colHeight - 150 > 350 ? colHeight - 150 : 350);
+          $("#what, #who").height(colHeight - 150 > 380 ? colHeight - 150 : 380);
+          $("#books").height(colHeight - 150 > 410 ? colHeight - 150 : 410);
+          $("#company").height(companyHeight - 175 > 100 ? companyHeight - 175 : 100).fitText(.85, { minFontSize: '46px' });
+        } else if ($.viewportW() >= 480) {
+          $("#what, #who, #books").height(colHeight > 450 ? colHeight : 450);
           $("#company").height(companyHeight - 175 > 100 ? companyHeight - 175 : 100).fitText(.85, { minFontSize: '46px' });
         } else {
-          $("#what, #who, #books").height(colHeight > 480 ? colHeight : 480);
+          $("#what, #who").height(colHeight > 660 ? colHeight : 660);
+          $("#books").height(colHeight > 500 ? colHeight : 500);
           $("#company").height(companyHeight - 175 > 100 ? companyHeight - 175 : 100).fitText(.85, { minFontSize: '46px' });
         }
 
