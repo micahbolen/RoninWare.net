@@ -10,6 +10,7 @@
     <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="scripts/modernizr-latest.js"></script>
     <script type="text/javascript"  src="scripts/jquery.fittext.js"></script>
+    <script type="text/javascript"  src="scripts/jquery.backstretch.js"></script>
     <script type="text/javascript"  src="scripts/verge.min.js"></script>
 
 
@@ -457,9 +458,9 @@
 
       function init() {
 
-        var bgW = $.viewportW();
-        var bgH = $.viewportH();
-        $("#bg, #bg-img").css({'width':bgW+'px','height':bgH+'px'});
+//         var bgW = $.viewportW();
+//         var bgH = $.viewportH();
+//         $("#bg, #bg-img").css({'width':bgW+'px','height':bgH+'px'});
 
 
         /**
@@ -489,11 +490,11 @@
 
 
         var flippedTop = $.viewportH() - 136;
-        $("#checkerboard-flipped").css({"margin-top":flippedTop +"px"});
+        //   $("#checkerboard-flipped").css({"margin-top":flippedTop +"px"});
 
         $(".fit").fitText();
 
-        $("#company").animate({opacity: "1.0"}, 6000);
+        //   $("#company").animate({opacity: "1.0"}, 6000);
 
 
 
@@ -516,20 +517,20 @@
 
 
           if(flickerCounter %  2 === 0) {
-            $('#logo').fadeOut(Math.random()*100);
+            $('#company').css({opacity: Math.random()});
           } else {
-            $('#logo').fadeIn(Math.random()*100);
+            $('#company').css({opacity: Math.random()});
           }
 
           flickerCounter++;
-          if (flickerCounter === 10) {
-            $("#mask").fadeOut(4000);
+          if (flickerCounter === 40) {
+            $('#company').css({opacity: 1});
            clearInterval(flickerInterval);
           }
         }
         var flickerInterval;
         flickerInterval = setInterval(flickerMask, 100);
-
+        $("#mask").fadeOut(4000);
 
 //         var blackStyle = 'position:absolute;z-index:-2;background-color:black;width:'+$.viewportW()+'px;height:'+$.viewportH()+'px;';
 //         $("body").prepend('<div id="black" style="'+blackStyle+'"></div>');
@@ -539,10 +540,12 @@
         var pagestate = items[Math.floor(Math.random() * items.length)];
 
         var bg = 'img/backgrounds/' + pagestate;
-        var bgW = $.viewportW();
-        var bgH = $.viewportH();
-        var bgStyle = 'position:fixed;width:'+bgW+'px;height:'+bgH+'px;z-index:-2;display:block;background-color:black;left:0;top:0;bottom:0;overflow:hidden';
-        $("body").prepend('<div id="bg" style="'+bgStyle+'"><img id="bg-img" src="'+bg+'" style="position:fixed;overflow:hidden;background-color:black;width:'+bgW+'px;height:'+bgH+'px" /></div>');
+        $.backstretch(bg);
+
+//         var bgW = $.viewportW();
+//         var bgH = $.viewportH();
+//         var bgStyle = 'position:fixed;width:'+bgW+'px;height:'+bgH+'px;z-index:-2;display:block;background-color:black;left:0;top:0;bottom:0;overflow:hidden';
+//         $("body").prepend('<div id="bg" style="'+bgStyle+'"><img id="bg-img" src="'+bg+'" style="position:fixed;overflow:hidden;background-color:black;width:'+bgW+'px;height:'+bgH+'px" /></div>');
 
         // ----------------------------------------------------------
 // If you're not in IE (or IE version is less than 5) then:
@@ -589,9 +592,7 @@ var ie = (function(){
       });
 
       $(window).on("touchmove touchstart", function(e) {
-       $("#bg").fadeOut();
-        $("#checkerboard").fadeOut();
-        $("#checkerboard-flipped").fadeOut();
+
       });
 
       //]]>
@@ -602,7 +603,7 @@ var ie = (function(){
   <body>
 
     <div id="checkerboard"></div>
-    <div id="checkerboard-flipped"></div>
+    <!--<div id="checkerboard-flipped"></div>-->
 <div id="content">
     <div style="height:75px;display:block"></div>
 
