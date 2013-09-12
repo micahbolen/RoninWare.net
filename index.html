@@ -4,7 +4,7 @@
   <head>
     <title>RoninWare.net</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+    <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
     <link href='css/bootstrap.min.css' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Nova+Square' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
@@ -35,6 +35,7 @@
 
       body {
         background-color:black;
+
       }
 
       a {
@@ -224,7 +225,13 @@
         text-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em white;
       }
 
+      .row {
+
+      }
+
       #content {
+
+
 
 
       }
@@ -233,7 +240,7 @@
 
         margin: 0;
 
-        opacity:0;
+        opacity:1;
         text-align: center;
 
         width:100%;
@@ -480,12 +487,15 @@
         }
 
 
+
         var flippedTop = $.viewportH() - 136;
         $("#checkerboard-flipped").css({"margin-top":flippedTop +"px"});
 
         $(".fit").fitText();
 
         $("#company").animate({opacity: "1.0"}, 6000);
+
+
 
       }
 
@@ -531,8 +541,8 @@
         var bg = 'img/backgrounds/' + pagestate;
         var bgW = $.viewportW();
         var bgH = $.viewportH();
-        var bgStyle = 'position:fixed;width:'+bgW+'px;height:'+bgH+'px;z-index:-2;display:block;background-color:black;';
-            $("body").prepend('<div id="bg" style="'+bgStyle+'"><img id="bg-img" src="'+bg+'" style="width:'+bgW+'px;height:'+bgH+'px" /></div>');
+        var bgStyle = 'position:fixed;width:'+bgW+'px;height:'+bgH+'px;z-index:-2;display:block;background-color:black;left:0;top:0;bottom:0;overflow:hidden';
+        $("body").prepend('<div id="bg" style="'+bgStyle+'"><img id="bg-img" src="'+bg+'" style="position:fixed;overflow:hidden;background-color:black;width:'+bgW+'px;height:'+bgH+'px" /></div>');
 
         // ----------------------------------------------------------
 // If you're not in IE (or IE version is less than 5) then:
@@ -574,8 +584,16 @@ var ie = (function(){
       });
 
       $( window ).on( "orientationchange resize", function( event ) {
+
         init();
       });
+
+      $(window).on("touchmove touchstart", function(e) {
+       $("#bg").fadeOut();
+        $("#checkerboard").fadeOut();
+        $("#checkerboard-flipped").fadeOut();
+      });
+
       //]]>
 
     </script>
@@ -585,8 +603,9 @@ var ie = (function(){
 
     <div id="checkerboard"></div>
     <div id="checkerboard-flipped"></div>
-
+<div id="content">
     <div style="height:75px;display:block"></div>
+
     <header id="company">
 
       <span class="ronin"><span id="r">R</span>onin</span>Ware.net
@@ -630,6 +649,6 @@ var ie = (function(){
     </div>
 
 
-
+  </div>
   </body>
 </html>
